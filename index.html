@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="styles.css"></script>
+    <title>Konfetti z jsConfetti</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+      #button-container {
+        text-align: center;
+      }
+      #confetti-button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      #confetti-button:hover {
+        background: #0056b3;
+      }
+      #message {
+        display: none;
+        font-size: 24px;
+        color: #333;
+        margin-top: 20px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="button-container">
+      <button id="confetti-button">Kliknij mnie!</button>
+      <p id="message">Hurra! 🎉</p>
+    </div>
+
+    <script>
+      // Tworzenie instancji jsConfetti
+      const jsConfetti = new JSConfetti();
+
+      // Pobranie elementów
+      const button = document.getElementById("confetti-button");
+      const message = document.getElementById("message");
+
+      // Obsługa zdarzenia kliknięcia
+      button.addEventListener("click", () => {
+        jsConfetti.addConfetti(); // Uruchomienie konfetti
+        button.style.display = "none"; // Ukrycie przycisku
+        message.style.display = "block"; // Wyświetlenie wiadomości
+      });
+    </script>
+  </body>
 </html>
